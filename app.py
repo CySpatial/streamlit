@@ -19,7 +19,7 @@ col1, col2 = st.columns([5, 1])
 options = list(leafmap.basemaps.keys())
 index = options.index("SATELLITE")
 
-data="D:/AMENAJMAN_PROJECTS/PLANS/BASCATAK/SHAPEFILES/PLAN_SINIRI_4326/PLAN_SINIRI_BASCATAK4326.shp"
+data="./shapeFile/PLAN_SINIRI_BASCATAK4326.shp"
 
 with col2:
 
