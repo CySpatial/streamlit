@@ -22,6 +22,27 @@ index = options.index("SATELLITE")
 bascatak="./shapeFile/bascatak4326.shp"
 culhali="./shapeFile/culhali4326.shp"
 
+style_b = {
+    "stroke": True,
+    "color": "red",
+    "weight": 2,
+    "opacity": 1,
+    "fill": True,
+    "fillColor": "red",
+    "fillOpacity": 0,
+}
+
+style_c = {
+    "stroke": True,
+    "color": "yellow",
+    "weight": 2,
+    "opacity": 1,
+    "fill": True,
+    "fillColor": "red",
+    "fillOpacity": 0,
+}
+
+
 with col2:
 
     basemap = st.selectbox("Select a basemap:", options, index)
@@ -29,10 +50,29 @@ with col2:
 
 with col1:
 
-    m = leafmap.Map(locate_control=True, latlon_control=True, draw_export=True, minimap_control=True)
+    m = leafmap.Map(locate_control=True, latlon_control=True, draw_export=True, toolbar_control=True,minimap_control=True)
     m.add_basemap(basemap)
     m.set_center(35.888432,39.654455)
-    m.add_shp(bascatak)
-    m.add_shp(culhali)
+    m.add_shp(bascatak,style=style_b)
+    m.add_shp(culhali,style=style_c)
+    
+
+    m.add_labels(
+        bascatak,
+        "SEFLIK_ADI",
+        font_size="8pt",
+        font_color="red",
+        font_family="arial",
+        font_weight="bold",
+    )
+
+    m.add_labels(
+    culhali,
+    "SEFLIK_ADI",
+    font_size="8pt",
+    font_color="yellow",
+    font_family="arial",
+    font_weight="bold",
+)
     m.to_streamlit(height=700)
     
