@@ -13,13 +13,14 @@ logo = "https://www.turkeyholidaydiary.com/wp-content/uploads/2013/12/turkey-tou
 st.sidebar.image(logo)
 
 
-st.title("AMENAJMAN PLAN UYGULAMASI")
+st.write("AMENAJMAN PLAN UYGULAMASI")
 
 col1, col2 = st.columns([5, 1])
 options = list(leafmap.basemaps.keys())
 index = options.index("SATELLITE")
 
-data="./shapeFile/PLAN_SINIRI_BASCATAK4326.shp"
+bascatak="./shapeFile/bascatak4326.shp"
+culhali="./shapeFile/culhali4326.shp"
 
 with col2:
 
@@ -31,6 +32,7 @@ with col1:
     m = leafmap.Map(locate_control=True, latlon_control=True, draw_export=True, minimap_control=True)
     m.add_basemap(basemap)
     m.set_center(35.888432,39.654455)
-    m.add_shp(data)
+    m.add_shp(bascatak)
+    m.add_shp(culhali)
     m.to_streamlit(height=700)
     
