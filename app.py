@@ -3,17 +3,17 @@ import leafmap.foliumap as leafmap
 import geopandas as gpd
 
 markdown = """
-Web App URL: <https://geotemplate.streamlit.app>
-GitHub Repository: <https://github.com/giswqs/streamlit-multipage-template>
+Bu uygulama Mustafa Ceyhan tarafından
+hazırlanmıştır.
 """
 
-st.sidebar.title("About")
+st.sidebar.title("Hakkında")
 st.sidebar.info(markdown)
-logo = "https://www.turkeyholidaydiary.com/wp-content/uploads/2013/12/turkey-tourist-map-1.jpg"
+logo = "https://1.bp.blogspot.com/-Ac-V6NYW4ZY/VAmyeqmPBAI/AAAAAAAAUkQ/lQnH9gGLml0/s1600/dunya_uzerinde_turkiye.jpg"
 st.sidebar.image(logo)
 
 
-st.write("AMENAJMAN PLAN UYGULAMASI")
+st.write("GERCEK ZAMANLI AMENAJMAN PLAN UYGULAMASI")
 
 col1, col2 = st.columns([5, 1])
 options = list(leafmap.basemaps.keys())
@@ -50,11 +50,12 @@ with col2:
 
 with col1:
 
-    m = leafmap.Map(locate_control=True, latlon_control=True, draw_export=True, toolbar_control=True,minimap_control=True)
+    m = leafmap.Map(locate_control=True, latlon_control=True, draw_export=True, layers_control=True,minimap_control=True)
     m.add_basemap(basemap)
     m.set_center(35.888432,39.654455)
-    m.add_shp(bascatak,style=style_b)
-    m.add_shp(culhali,style=style_c)
+    m.add_shp(bascatak,"bascatak",style=style_b)
+    m.add_shp(culhali,"culhali",style=style_c)
+    m.add_search_control(bascatak)
     
 
     m.add_labels(
