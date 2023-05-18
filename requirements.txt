@@ -1,4 +1,4 @@
 leafmap
 geopandas
 pycrs
-localtileserver 
+localtileserver
