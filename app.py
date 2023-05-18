@@ -21,7 +21,7 @@ index = options.index("SATELLITE")
 
 bascatak="./shapeFile/bascatak4326.shp"
 culhali="./shapeFile/culhali4326.shp"
-topoPafta="./raster/clippedRaster.tif"
+
 
 style_b = {
     "stroke": True,
@@ -54,10 +54,9 @@ with col1:
     m = leafmap.Map(locate_control=True, latlon_control=True, draw_export=True, layers_control=True,minimap_control=True)
     m.add_basemap(basemap)
     m.set_center(35.888432,39.654455)
-    m.add_local_tile(topoPafta,layer_name="bascatak_topo")
     m.add_shp(bascatak,"bascatak_plan_siniri",style=style_b,info_mode=False)
     m.add_shp(culhali,"culhali_plan_siniri",style=style_c,info_mode=False)
-    m.add_search_control(bascatak)
+  
     
 
     m.add_labels(
