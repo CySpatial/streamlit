@@ -19,8 +19,7 @@ col1, col2 = st.columns([5, 1])
 options = list(leafmap.basemaps.keys())
 index = options.index("SATELLITE")
 
-bascatak="./shapeFile/bascatak4326.shp"
-culhali="./shapeFile/culhali4326.shp"
+bitlis_mus="./shapeFile/bitlis_mus.shp"
 
 
 style_b = {
@@ -33,15 +32,7 @@ style_b = {
     "fillOpacity": 0,
 }
 
-style_c = {
-    "stroke": True,
-    "color": "yellow",
-    "weight": 2,
-    "opacity": 1,
-    "fill": True,
-    "fillColor": "red",
-    "fillOpacity": 0,
-}
+
 
 
 with col2:
@@ -54,27 +45,18 @@ with col1:
     m = leafmap.Map(locate_control=True, latlon_control=True, draw_export=True, layers_control=True,minimap_control=True)
     m.add_basemap(basemap)
     m.set_center(35.888432,39.654455)
-    m.add_shp(bascatak,"bascatak_plan_siniri",style=style_b,info_mode=False)
-    m.add_shp(culhali,"culhali_plan_siniri",style=style_c,info_mode=False)
+    m.add_shp(bitlis_mus,"bitlis_mus_plan_siniri",style=style_b,info_mode=False)
   
-    
 
     m.add_labels(
-        bascatak,
-        "SEFLIK_ADI",
+        bitlis_mus,
+        "label",
         font_size="8pt",
         font_color="red",
         font_family="arial",
         font_weight="bold",
     )
 
-    m.add_labels(
-    culhali,
-    "SEFLIK_ADI",
-    font_size="8pt",
-    font_color="yellow",
-    font_family="arial",
-    font_weight="bold",
-)
+    
     m.to_streamlit(height=700)
     
